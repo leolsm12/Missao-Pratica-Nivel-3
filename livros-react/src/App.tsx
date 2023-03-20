@@ -1,13 +1,23 @@
 
-import LivroLista from './LivroLista';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
+import LivroLista from "./LivroLista";
+import LivroDados from "./LivroDados";
+import { ControleLivro } from "./controle/ControleLivros";
+
+const livros = new ControleLivro();
+
+export default function App() {
   return (
-    <div className="App">
-      <LivroLista />
-    </div>
+    <React.Fragment>
+      <BrowserRouter>
+        <Routes>
+          <Route path="catalogo" element={<LivroLista livros={livros} />} />
+          <Route path="novo" element={<LivroDados livros={livros} />} />
+          <Route path="/" element={<LivroLista livros={livros} />} />
+        </Routes>
+      </BrowserRouter>
+    </React.Fragment>
   );
 }
-
-export default App;

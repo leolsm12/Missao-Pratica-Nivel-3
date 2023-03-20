@@ -1,21 +1,25 @@
 import { Editora } from '../modelo/Editora';
 
-export class ControleEditora {
-   editoras: Editora[] = [ 
-     {    "codEditora": 100,    "nome": "Alta Books"  }, 
-     {    "codEditora": 200,    "nome": "Pearson"  },  
-     {    "codEditora": 300,    "nome": "Addison Wesley"  }
+export const editoras: Editora[] = [ 
+     {    "codEditora": 1,    "nomeEditora": "Alta Books"  }, 
+     {    "codEditora": 2,    "nomeEditora": "Pearson"  },  
+     {    "codEditora": 3,    "nomeEditora": "Addison Wesley"  },
+    
 ];
+export class ControleEditora {
+  private editoras: Editora[];
 
-  
-    getNomeEditora(codEditora:number) {
-        return this.editoras.filter((editora) => {
-        return editora.codEditora === codEditora;
-      });
-      }
-  
-    getEditoras() {
-      return this.editoras;
-    }
+  constructor(editoras: Editora[]) {
+    this.editoras = editoras;
   }
+
+  getNomeEditora(cod: number) {
+    return this.editoras.filter((editora) => { return editora.codEditora === cod })
+  }
+
+  getEditoras() {
+    return this.editoras;
+  }
+}
+  
 
